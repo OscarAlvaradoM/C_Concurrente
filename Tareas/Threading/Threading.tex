@@ -1,0 +1,80 @@
+\documentclass[twocolumn, letterpaper,aps,pra,10pt]{revtex4-1}
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{times}
+\usepackage{calligra}
+\usepackage{graphicx}
+\usepackage{latexsym}
+\usepackage{amsmath,amssymb}
+\usepackage{subfigure}
+\usepackage{booktabs}
+\usepackage{tabulary}
+\usepackage{url}
+%\usepackage{mhchem}
+\spanishdecimal{.}
+\usepackage{ragged2e}
+\bibliographystyle{unsrt}
+\usepackage[usenames,dvipsnames]{pstricks}
+\usepackage{epsfig}
+\usepackage{pst-grad} % For gradients
+\usepackage{pst-plot} % For axes
+\usepackage{float}
+\usepackage{colortbl}
+\usepackage{hyperref}
+\usepackage{latexsym}
+\usepackage{xcolor}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\begin{document}
+\renewcommand{\figurename}{{\bf Figura }}
+\renewcommand{\tablename}{{\bf Tabla}}
+\renewcommand{\thesection}{\arabic{section}}
+\renewcommand{\thesubsection}{\arabic{subsection}}
+
+\begin{figure}
+\flushleft \includegraphics[width=1in]{unam_logo.jpg}
+\end{figure}
+\begin{figure}
+\flushright \includegraphics[width=1in]{iimas.jpg}
+\end{figure}
+
+\lhead{}
+\chead{Materia, IIMAS, UNAM, 2020-1}
+\rhead{}
+\lfoot{Alvarado Morán Óscar Anuar} 
+\cfoot{\thepage}
+\rfoot{}
+
+\vspace*{-1cm}
+\title{Threading en Python}
+\author{Alvarado Morán Óscar Anuar}
+\affiliation{Computación Concurrente\\ IIMAS, 2020-1 \\
+Universidad Nacional Autónoma de México}
+
+\maketitle
+%-----------------------------------------------------------------------------
+\section*{Sincronización con Threading en Python}
+
+\subsection{lock}
+Según etendí, el módulo 'lock' funciona tal y como lo usamos en 'multiprocessing', sólo que aquí la acción de bloqueo no le pertenece a un hilo en particular, sino que un hilo puede invocar el bloqueo que por default aparecerá en modo -desbloqueado- y se activará o desactivará mediante los métodos 'acquire()' y 'release()' no necesariamente por el mismo hilo.
+
+\subsection{rlock}
+Aquí entiendo que este método se usa para activar o desactivar (igual con 'acquire()' y 'release()') varias veces un bloqueo que fue invocado por el mismo hilo con el que se está activando o desactivando el mismo. 
+
+\subsection{event}
+Es el método más básico de comunicación, simplemente un hilo espera una señal y otro la envía. Aquí se utilizan los métodos 'set()', 'clear()' y 'wait()', donde los primeros dos se usan para configurar la señal de comunicación (una bandera) como verdadero o falso, respectivamente, y el último método no hace nada más que bloquear lo que hace un hilo hasta que la señal emitida por el otro hilo esté configurada en verdadero.
+
+\subsection{condition}
+Por lo que entiendo aquí, las variables de 'condition' siempre se relacionan con un bloqueo. En la documentación lo explican como un tipo de comunicación productor - consumidor, de modo que mediante el método 'wait()' está esperando a la llamada de algo ajeno para despertar y seguir haciendo su trabajo (productor) y aquí es donde entra el método 'notify()' que le notifica al método 'wait()' que ya haga sus cosa, sin embargo, esto depende aún de que haya bloqueos en el ambiente.
+
+\subsection{semaphore}
+Como ya lo vimos en clase, un semáforo es uan variable compartida que cambia mediante invocaciones de los métodos 'acquire()' y 'release()', no puede ser negativa, por lo que al llegar a cero se bloquea y espera a la llamada del método 'release()' de algún hilo, esto es, dicho método aumenta el semáforo y el otro lo disminuye.
+
+%-----------------------------------------------------------------------------
+\begin{thebibliography}{99}
+%\bibitem{desc} \url{http://www.physics.csbsju.edu/tk/370/jcalvert/dischg.htm.html}
+%\bibitem{pasch} Domínguez, Arturo., \textit{Derivation of the Paschen curve law ALPhA Laboratory Immersion}, 2014 
+\end{thebibliography}
+\end{document}

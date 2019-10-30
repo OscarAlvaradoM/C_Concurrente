@@ -1,0 +1,8 @@
+\BOOKMARK [0][-]{section*.1}{Threading en Python}{}% 1
+\BOOKMARK [1][-]{section*.2}{Sincronizaci\363n con Threading en Python}{section*.1}% 2
+\BOOKMARK [2][-]{section*.3}{lock}{section*.2}% 3
+\BOOKMARK [2][-]{section*.4}{rlock}{section*.2}% 4
+\BOOKMARK [2][-]{section*.5}{event}{section*.2}% 5
+\BOOKMARK [2][-]{section*.6}{condition}{section*.2}% 6
+\BOOKMARK [2][-]{section*.7}{semaphore}{section*.2}% 7
+\BOOKMARK [1][-]{section*.8}{Referencias}{section*.1}% 8
